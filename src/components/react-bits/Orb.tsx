@@ -7,6 +7,8 @@ interface OrbProps {
   rotateOnHover?: boolean;
   forceHoverState?: boolean;
   backgroundColor?: string;
+  /** Values above 1 shrink the orb */
+  scale?: number;
 }
 
 export default function Orb({
@@ -14,7 +16,8 @@ export default function Orb({
   hoverIntensity = 0.2,
   rotateOnHover = true,
   forceHoverState = false,
-  backgroundColor = '#000000'
+  backgroundColor = '#000000',
+  scale = 1
 }: OrbProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
@@ -38,6 +41,7 @@ export default function Orb({
     uniform float hover;
     uniform float rot;
     uniform float hoverIntensity;
+    uniform float orbScale;
     uniform vec3 backgroundColor;
     varying vec2 vUv;
 
@@ -171,7 +175,7 @@ export default function Orb({
     vec4 mainImage(vec2 fragCoord) {
       vec2 center = iResolution.xy * 0.5;
       float size = min(iResolution.x, iResolution.y);
-      vec2 uv = (fragCoord - center) / size * 2.0;
+      vec2 uv = (fragCoord - center) / size * 2.0 * orbScale;
       
       float angle = rot;
       float s = sin(angle);
@@ -213,6 +217,7 @@ export default function Orb({
         hover: { value: 0 },
         rot: { value: 0 },
         hoverIntensity: { value: hoverIntensity },
+        orbScale: { value: scale },
         backgroundColor: { value: hexToVec3(backgroundColor) }
       }
     });
@@ -247,8 +252,8 @@ export default function Orb({
       const size = Math.min(width, height);
       const centerX = width / 2;
       const centerY = height / 2;
-      const uvX = ((x - centerX) / size) * 2.0;
-      const uvY = ((y - centerY) / size) * 2.0;
+      const uvX = ((x - centerX) / size) * 2.0 * scale;
+      const uvY = ((y - centerY) / size) * 2.0 * scale;
       const dist = Math.sqrt(uvX * uvX + uvY * uvY);
       targetHover = Math.max(0, 1 - dist / 0.95);
     };
@@ -268,6 +273,7 @@ export default function Orb({
       program.uniforms.iTime.value = t * 0.001;
       program.uniforms.hue.value = hue;
       program.uniforms.hoverIntensity.value = hoverIntensity;
+      program.uniforms.orbScale.value = scale;
 
       const effectiveHover = forceHoverState ? 1 : targetHover;
       program.uniforms.hover.value += (effectiveHover - program.uniforms.hover.value) * 0.14;
@@ -290,7 +296,7 @@ export default function Orb({
       container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor]);
+  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor, scale]);
 
   return <div ref={ctnDom} className="absolute inset-0 h-full w-full" />;
 }

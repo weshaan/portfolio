@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import clsx from 'clsx'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { CursorGlow } from '@/components/CursorGlow'
@@ -35,12 +36,12 @@ export default function Layout() {
           <LiquidEther {...defaultLiquidEther} />
         </div>
       ) : null}
-      <CursorGlow />
+      {!isHome && <CursorGlow />}
       {!isExperience && !isHome && (
         <div className="pointer-events-none fixed inset-0 z-0 grid-bg opacity-15" aria-hidden />
       )}
       <Navbar />
-      <main className="relative z-10 flex-1 pt-[4.5rem]">
+      <main className={clsx('relative z-10 flex-1', !isHome && 'pt-[4.5rem]')}>
         <Outlet />
       </main>
       <Footer />
