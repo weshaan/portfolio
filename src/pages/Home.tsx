@@ -20,7 +20,8 @@ export default function Home() {
       <HomeScrollBackground />
 
       <section className="relative flex min-h-screen flex-col items-center justify-center px-5 text-center">
-        <OrbHoverHint />
+        <OrbHoverHint variant="top-right" />
+        <OrbHoverHint variant="bottom-left" />
         <div className="relative z-10 max-w-4xl translate-y-8 sm:translate-y-10">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1 pr-4 backdrop-blur-sm">
             <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">

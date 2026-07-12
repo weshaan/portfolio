@@ -1,11 +1,70 @@
-export default function OrbHoverHint() {
+import clsx from 'clsx'
+import type { ReactNode } from 'react'
+
+type OrbHoverHintVariant = 'top-right' | 'bottom-left'
+
+const variants: Record<
+  OrbHoverHintVariant,
+  {
+    position: string
+    layout: string
+    text: string
+    message: ReactNode
+    width: string
+    path: string
+    markerId: string
+  }
+> = {
+  'top-right': {
+    position: 'right-[2%] top-[22%] lg:right-[5%] xl:right-[9%]',
+    layout: 'flex-row-reverse items-start',
+    text: 'pt-1 text-left',
+    message: 'Hover the orb for something suspicious!',
+    width: 'w-48 lg:w-52',
+    path: 'M 66 10 C 50 12 24 42 14 78',
+    markerId: 'orb-hint-arrow-top-right',
+  },
+  'bottom-left': {
+    position: 'left-[4%] top-[62%] lg:left-[7%] xl:left-[11%]',
+    layout: 'flex-row items-end',
+    text: 'pb-1 text-right',
+    message: (
+      <>
+        scroll to bottom and move
+        <br />
+        <span className="whitespace-nowrap">mouse for a plasma trail 👀</span>
+      </>
+    ),
+    width: 'w-40 lg:w-44',
+    path: 'M 6 78 C 22 76 48 46 58 10',
+    markerId: 'orb-hint-arrow-bottom-left',
+  },
+}
+
+type OrbHoverHintProps = {
+  variant: OrbHoverHintVariant
+}
+
+export default function OrbHoverHint({ variant }: OrbHoverHintProps) {
+  const config = variants[variant]
+
   return (
     <div
-      className="pointer-events-none absolute right-[4%] top-[22%] z-10 hidden translate-y-8 flex-row-reverse items-start gap-2 sm:translate-y-10 md:flex lg:right-[7%] xl:right-[11%]"
+      className={clsx(
+        'pointer-events-none absolute z-10 hidden translate-y-8 gap-2 sm:translate-y-10 md:flex',
+        config.position,
+        config.layout
+      )}
       aria-hidden
     >
-      <p className="w-40 shrink-0 pt-1 text-left text-xs font-medium leading-snug text-white/75 lg:w-44 lg:text-sm">
-        Hover the orb for something suspicious!
+      <p
+        className={clsx(
+          'shrink-0 text-xs font-medium leading-snug text-white/75 lg:text-sm',
+          config.width,
+          config.text
+        )}
+      >
+        {config.message}
       </p>
       <svg
         viewBox="0 0 72 88"
@@ -16,7 +75,7 @@ export default function OrbHoverHint() {
       >
         <defs>
           <marker
-            id="orb-hint-arrow"
+            id={config.markerId}
             markerWidth="8"
             markerHeight="8"
             refX="6"
@@ -27,11 +86,11 @@ export default function OrbHoverHint() {
           </marker>
         </defs>
         <path
-          d="M 66 10 C 50 12 24 42 14 78"
+          d={config.path}
           stroke="currentColor"
           strokeWidth="1.75"
           strokeLinecap="round"
-          markerEnd="url(#orb-hint-arrow)"
+          markerEnd={`url(#${config.markerId})`}
           className="text-white/90"
         />
       </svg>
