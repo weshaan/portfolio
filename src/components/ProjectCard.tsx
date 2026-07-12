@@ -1,21 +1,23 @@
 import SpotlightCard from '@/components/react-bits/SpotlightCard'
 import type { Project } from '@/data/siteData'
+import clsx from 'clsx'
 
 type Props = {
   project: Project
+  glass?: boolean
 }
 
-export default function ProjectCard({ project }: Props) {
+export default function ProjectCard({ project, glass = false }: Props) {
   const hasGithub = project.github && project.github !== '#'
 
   return (
     <SpotlightCard
-      className="group h-full border-border/80 bg-elevated/80 p-0"
+      className={clsx('group h-full p-0', glass ? 'liquid-glass liquid-glass-hover' : 'border-border/80 bg-elevated/80')}
       spotlightColor="rgba(124, 58, 237, 0.15)"
     >
       <div className="flex h-full flex-col p-6">
         <div className="mb-3 flex items-start justify-between gap-3">
-          <h3 className="text-lg font-bold leading-snug transition-colors group-hover:text-accent-2 sm:text-xl">
+          <h3 className={clsx('text-lg font-bold leading-snug transition-colors sm:text-xl', glass ? 'text-text group-hover:text-accent-2' : 'group-hover:text-accent-2')}>
             {project.title}
           </h3>
           <div className="flex shrink-0 flex-col items-end gap-1">
@@ -25,18 +27,23 @@ export default function ProjectCard({ project }: Props) {
               </span>
             )}
             {project.stars != null && project.stars > 0 && (
-              <span className="font-mono text-xs text-muted">★ {project.stars}</span>
+              <span className={clsx('font-mono text-xs', glass ? 'text-text/70' : 'text-muted')}>★ {project.stars}</span>
             )}
           </div>
         </div>
 
-        <p className="mb-5 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+        <p className={clsx('mb-5 flex-1 text-sm leading-relaxed', glass ? 'text-text/80' : 'text-muted')}>{project.description}</p>
 
         <div className="mb-5 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded border border-border bg-void/50 px-2 py-0.5 font-mono text-[10px] text-muted sm:text-xs"
+              className={clsx(
+                'rounded border px-2 py-0.5 font-mono text-[10px] sm:text-xs',
+                glass
+                  ? 'border-white/10 bg-void/65 text-text/75'
+                  : 'border-border bg-void/50 text-muted',
+              )}
             >
               {tag}
             </span>

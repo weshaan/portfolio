@@ -172,6 +172,17 @@
     z-index: 1;
   }
 
+  .liquid-glass-hover {
+    transition:
+      transform 0.5s var(--ease-butter),
+      border-color 0.5s var(--ease-butter);
+  }
+
+  .liquid-glass.liquid-glass-hover:hover {
+    transform: scale(1.02);
+    border-color: color-mix(in srgb, white 30%, transparent);
+  }
+
   .noise-overlay::before {
     content: '';
     position: fixed;

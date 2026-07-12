@@ -1,9 +1,10 @@
+import type { ReactNode } from 'react'
 import BlurText from '@/components/react-bits/BlurText'
 
 type Props = {
   eyebrow?: string
   title: string
-  subtitle?: string
+  subtitle?: ReactNode
   align?: 'left' | 'center'
 }
 

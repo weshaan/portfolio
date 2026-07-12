@@ -6,7 +6,8 @@ import Footer from './Footer'
 import { CursorGlow } from '@/components/CursorGlow'
 import LiquidEther from '@/components/react-bits/LiquidEther'
 import Hyperspeed from '@/components/react-bits/Hyperspeed'
-import { defaultLiquidEther, experienceHyperspeed } from '@/config/pageBackgrounds'
+import LightPillar from '@/components/react-bits/LightPillar'
+import { defaultLiquidEther, experienceHyperspeed, projectsLightPillar } from '@/config/pageBackgrounds'
 import { useLenis, getLenis } from '@/hooks/useLenis'
 
 export default function Layout() {
@@ -24,6 +25,7 @@ export default function Layout() {
 
   const isHome = location.pathname === '/'
   const isExperience = location.pathname === '/experience'
+  const isProjects = location.pathname === '/projects'
 
   return (
     <div className="noise-overlay relative flex min-h-screen flex-col">
@@ -31,13 +33,17 @@ export default function Layout() {
         <div className="fixed inset-0 z-0 h-screen w-screen" aria-hidden>
           <Hyperspeed effectOptions={experienceHyperspeed} />
         </div>
+      ) : isProjects ? (
+        <div className="pointer-events-none fixed inset-0 z-0 bg-void" aria-hidden>
+          <LightPillar {...projectsLightPillar} />
+        </div>
       ) : !isHome ? (
         <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
           <LiquidEther {...defaultLiquidEther} />
         </div>
       ) : null}
-      {!isHome && <CursorGlow />}
-      {!isExperience && !isHome && (
+      {!isHome && !isProjects && <CursorGlow />}
+      {!isExperience && !isHome && !isProjects && (
         <div className="pointer-events-none fixed inset-0 z-0 grid-bg opacity-15" aria-hidden />
       )}
       <Navbar />

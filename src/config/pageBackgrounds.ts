@@ -33,3 +33,18 @@ export const homeLiquidEther = {
 }
 
 export const defaultLiquidEther = homeLiquidEther
+
+export const projectsLightPillar = {
+  topColor: '#5227ff',
+  bottomColor: '#ff9ffc',
+  intensity: 1,
+  rotationSpeed: 0.3,
+  interactive: true,
+  glowAmount: 0.002,
+  pillarWidth: 3,
+  pillarHeight: 0.4,
+  noiseIntensity: 0.5,
+  pillarRotation: 25,
+  mixBlendMode: 'screen' as const,
+  quality: 'medium' as const,
+}

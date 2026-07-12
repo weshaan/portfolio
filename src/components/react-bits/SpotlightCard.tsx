@@ -1,50 +1,65 @@
-import React, { useRef, useState } from 'react';
-import clsx from 'clsx';
-
-interface Position {
-  x: number;
-  y: number;
-}
+import React, { useRef, useState, useCallback } from 'react'
+import clsx from 'clsx'
 
 interface SpotlightCardProps extends React.PropsWithChildren {
-  className?: string;
-  spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`;
+  className?: string
+  spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`
 }
 
 const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(255, 255, 255, 0.25)'
+  spotlightColor = 'rgba(255, 255, 255, 0.25)',
 }) => {
-  const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState<number>(0);
+  const divRef = useRef<HTMLDivElement>(null)
+  const spotlightRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number | null>(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [opacity, setOpacity] = useState(0)
 
-  const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = e => {
-    if (!divRef.current || isFocused) return;
+  const updateSpotlight = useCallback(
+    (x: number, y: number) => {
+      if (!spotlightRef.current) return
+      spotlightRef.current.style.background = `radial-gradient(circle at ${x}px ${y}px, ${spotlightColor}, transparent 68%)`
+    },
+    [spotlightColor],
+  )
 
-    const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
+  const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    if (!divRef.current || isFocused) return
+
+    const rect = divRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    rafRef.current = requestAnimationFrame(() => {
+      updateSpotlight(x, y)
+      rafRef.current = null
+    })
+  }
 
   const handleFocus = () => {
-    setIsFocused(true);
-    setOpacity(0.85);
-  };
+    setIsFocused(true)
+    setOpacity(0.85)
+  }
 
   const handleBlur = () => {
-    setIsFocused(false);
-    setOpacity(0);
-  };
+    setIsFocused(false)
+    setOpacity(0)
+  }
 
   const handleMouseEnter = () => {
-    setOpacity(0.85);
-  };
+    setOpacity(0.85)
+  }
 
   const handleMouseLeave = () => {
-    setOpacity(0);
-  };
+    setOpacity(0)
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+  }
 
   return (
     <div
@@ -57,19 +72,17 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
       className={clsx(
         'relative overflow-hidden rounded-3xl p-8',
         !className.includes('liquid-glass') && 'border border-neutral-800 bg-neutral-900',
-        className
+        className,
       )}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
-        style={{
-          opacity,
-          background: `radial-gradient(circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 68%)`
-        }}
+        ref={spotlightRef}
+        className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
+        style={{ opacity }}
       />
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default SpotlightCard;
+export default SpotlightCard
