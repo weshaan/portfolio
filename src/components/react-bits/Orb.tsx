@@ -182,8 +182,8 @@ export default function Orb({
       float c = cos(angle);
       uv = vec2(c * uv.x - s * uv.y, s * uv.x + c * uv.y);
       
-      uv.x += hover * hoverIntensity * 0.17 * sin(uv.y * 10.0 + iTime);
-      uv.y += hover * hoverIntensity * 0.17 * sin(uv.x * 10.0 + iTime);
+      uv.x += hover * hoverIntensity * 0.29 * sin(uv.y * 10.0 + iTime);
+      uv.y += hover * hoverIntensity * 0.29 * sin(uv.x * 10.0 + iTime);
       
       return draw(uv);
     }

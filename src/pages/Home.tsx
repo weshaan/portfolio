@@ -27,13 +27,14 @@ export default function Home() {
             <span className="text-sm text-muted">{site.availability}</span>
           </div>
 
-          <h1 className="text-2xl font-bold leading-snug tracking-tight text-white sm:text-3xl md:text-4xl">
+          <h1 className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl">
             {site.headline}
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
-            {site.subheadline}
-          </p>
+          <div className="mx-auto mt-4 max-w-2xl space-y-1 text-xs leading-relaxed text-white/60 sm:text-sm">
+            <p>{site.subheadline}</p>
+            <p>{site.subheadlineSecondary}</p>
+          </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link

@@ -7,9 +7,11 @@
 export const site = {
   name: 'Eshaan Walia',
   tagline: 'Full-Stack Java Developer · LLMs & RAG · Open Source',
-  headline: 'Building intelligent systems & resilient software',
+  headline: 'Build intelligent software',
   subheadline:
-    'GSoC Contributor @ FOSSASIA · SDE Intern @ Attryb · Studying LLMs & RAG-based systems while shipping full-stack apps, ML pipelines, and open-source tools.',
+    'GSoC Contributor @ FOSSASIA · SDE Intern · Studying LLMs & RAG-based systems',
+  subheadlineSecondary:
+    'while shipping full-stack apps, ML pipelines, and open-source tools.',
   location: 'Patiala, Punjab, India',
   email: 'your.email@example.com', // ← replace with your email
   availability: 'Open to opportunities',

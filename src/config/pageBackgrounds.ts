@@ -16,7 +16,7 @@ export const experienceHyperspeed = {
 
 export const homeOrb = {
   hue: 20,
-  hoverIntensity: 0.48,
+  hoverIntensity: 0.75,
   rotateOnHover: true,
   backgroundColor: '#050508',
   scale: 1.0,
