@@ -7,6 +7,7 @@ import ProjectCard from '@/components/ProjectCard'
 import GitHubStats from '@/components/GitHubStats'
 import InstagramStats from '@/components/InstagramStats'
 import HomeScrollBackground from '@/components/HomeScrollBackground'
+import OrbHoverHint from '@/components/OrbHoverHint'
 import Reveal from '@/components/Reveal'
 import { Section } from '@/components/layout/PageContainer'
 import { projects, site } from '@/data/siteData'
@@ -19,6 +20,7 @@ export default function Home() {
       <HomeScrollBackground />
 
       <section className="relative flex min-h-screen flex-col items-center justify-center px-5 text-center">
+        <OrbHoverHint />
         <div className="relative z-10 max-w-4xl translate-y-8 sm:translate-y-10">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1 pr-4 backdrop-blur-sm">
             <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
@@ -27,11 +29,11 @@ export default function Home() {
             <span className="text-sm text-muted">{site.availability}</span>
           </div>
 
-          <h1 className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-2xl font-bold leading-snug tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[2.75rem]">
             {site.headline}
           </h1>
 
-          <div className="mx-auto mt-4 max-w-2xl space-y-1 text-xs leading-relaxed text-white/60 sm:text-sm">
+          <div className="mx-auto mt-4 max-w-2xl space-y-1 text-sm leading-relaxed text-white/60 sm:text-base">
             <p>{site.subheadline}</p>
             <p>{site.subheadlineSecondary}</p>
           </div>

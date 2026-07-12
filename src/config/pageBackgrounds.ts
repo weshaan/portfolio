@@ -19,7 +19,7 @@ export const homeOrb = {
   hoverIntensity: 0.75,
   rotateOnHover: true,
   backgroundColor: '#050508',
-  scale: 1.0,
+  scale: 0.94,
 }
 
 export const homeLiquidEther = {
