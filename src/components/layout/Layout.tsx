@@ -41,7 +41,7 @@ export default function Layout() {
         <div className="pointer-events-none fixed inset-0 z-0 grid-bg opacity-15" aria-hidden />
       )}
       <Navbar />
-      <main className={clsx('relative z-10 flex-1', !isHome && 'pt-[4.5rem]')}>
+      <main className={clsx('relative z-10 flex-1', !isHome && 'pt-20')}>
         <Outlet />
       </main>
       <Footer />

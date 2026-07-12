@@ -41,7 +41,7 @@ export default function HomeScrollBackground() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
-      <div ref={orbRef} className="absolute inset-0 h-full w-full" style={{ opacity: 1 }}>
+      <div ref={orbRef} className="absolute inset-0 h-full w-full translate-y-8 sm:translate-y-10" style={{ opacity: 1 }}>
         <Orb {...homeOrb} />
       </div>
       <div ref={etherRef} className="absolute inset-0 h-full w-full" style={{ opacity: 0 }}>
