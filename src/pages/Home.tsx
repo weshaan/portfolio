@@ -7,6 +7,7 @@ import SkillMarquee from '@/components/SkillMarquee'
 import ProjectCard from '@/components/ProjectCard'
 import GitHubStats from '@/components/GitHubStats'
 import InstagramStats from '@/components/InstagramStats'
+import HomeScrollBackground from '@/components/HomeScrollBackground'
 import Reveal from '@/components/Reveal'
 import { PageContainer, Section } from '@/components/layout/PageContainer'
 import { projects, site, social, heroRoles } from '@/data/siteData'
@@ -16,7 +17,9 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative min-h-[calc(100vh-4.5rem)] overflow-hidden">
+      <HomeScrollBackground />
+
+      <section className="relative -mt-[4.5rem] min-h-screen overflow-hidden pt-[4.5rem]">
         <PageContainer className="relative z-10 flex min-h-[calc(100vh-4.5rem)] flex-col justify-center py-16 md:py-20">
           <div className="max-w-3xl">
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/80 bg-void/50 px-4 py-2 font-mono text-xs uppercase tracking-widest text-accent-2 backdrop-blur-sm">
@@ -91,7 +94,8 @@ export default function Home() {
         </PageContainer>
       </section>
 
-      <SkillMarquee />
+      <div className="relative z-10">
+        <SkillMarquee />
 
       <Section>
         <div className="space-y-6">
@@ -139,6 +143,7 @@ export default function Home() {
           </Magnet>
         </Reveal>
       </Section>
+      </div>
     </>
   )
 }

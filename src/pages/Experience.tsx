@@ -6,7 +6,7 @@ import { experience } from '@/data/siteData'
 
 export default function ExperiencePage() {
   return (
-    <Section tight>
+    <Section tight className="relative">
       <SectionHeading
         eyebrow="Experience"
         title="Where I've built & contributed"
