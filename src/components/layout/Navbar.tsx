@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed left-0 right-0 top-4 z-50 px-4 sm:top-5 sm:px-6">
-      <div className="mx-auto flex max-w-3xl items-center justify-between rounded-full border border-white/10 bg-void/50 px-3 py-2 backdrop-blur-xl sm:max-w-4xl sm:px-4 sm:py-2.5">
+      <div className="liquid-glass mx-auto flex max-w-3xl items-center justify-between rounded-full px-3 py-2 sm:max-w-4xl sm:px-4 sm:py-2.5">
         <NavLink to="/" className="group flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-bold text-black transition-transform duration-300 group-hover:scale-105 sm:h-9 sm:w-9 sm:text-sm">
             {site.name
@@ -61,7 +61,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 md:hidden"
+          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm md:hidden"
           onClick={() => setMenuOpen((o) => !o)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -73,7 +73,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="glass absolute left-4 right-4 top-[calc(100%+0.5rem)] rounded-2xl border border-border/60 md:hidden">
+        <div className="liquid-glass absolute left-4 right-4 top-[calc(100%+0.5rem)] rounded-2xl md:hidden">
           <nav className="flex flex-col gap-0.5 px-4 py-3">
             {pillNavLinks.map((link) => (
               <NavLink

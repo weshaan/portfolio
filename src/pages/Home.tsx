@@ -8,6 +8,7 @@ import GitHubStats from '@/components/GitHubStats'
 import InstagramStats from '@/components/InstagramStats'
 import HomeScrollBackground from '@/components/HomeScrollBackground'
 import OrbHoverHint from '@/components/OrbHoverHint'
+import { CursorGlow } from '@/components/CursorGlow'
 import Reveal from '@/components/Reveal'
 import { Section } from '@/components/layout/PageContainer'
 import { projects, site } from '@/data/siteData'
@@ -18,6 +19,9 @@ export default function Home() {
   return (
     <>
       <HomeScrollBackground />
+      <div className="pointer-events-none fixed inset-0 z-[1]" aria-hidden>
+        <CursorGlow />
+      </div>
 
       <section className="relative flex min-h-screen flex-col items-center justify-center px-5 text-center">
         <OrbHoverHint variant="top-right" />
