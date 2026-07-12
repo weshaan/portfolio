@@ -17,7 +17,7 @@ export default function ExperiencePage() {
         {experience.map((job, index) => (
           <Reveal key={`${job.company}-${job.period}`} delay={index * 0.05}>
             <SpotlightCard
-              className="border-border/80 bg-elevated/50"
+              className="liquid-glass"
               spotlightColor={
                 index % 3 === 0
                   ? 'rgba(124, 58, 237, 0.12)'

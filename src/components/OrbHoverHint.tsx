@@ -19,7 +19,7 @@ const variants: Record<
     position: 'right-[2%] top-[22%] lg:right-[5%] xl:right-[9%]',
     layout: 'flex-row-reverse items-start',
     text: 'pt-1 text-left',
-    message: 'Hover the orb for something suspicious!',
+    message: 'hovering the orb makes it angry!',
     width: 'w-48 lg:w-52',
     path: 'M 66 10 C 50 12 24 42 14 78',
     markerId: 'orb-hint-arrow-top-right',
