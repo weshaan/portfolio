@@ -9,6 +9,7 @@ interface OrbProps {
   backgroundColor?: string;
   /** Values above 1 shrink the orb */
   scale?: number;
+  rotationSpeed?: number;
 }
 
 export default function Orb({
@@ -17,7 +18,8 @@ export default function Orb({
   rotateOnHover = true,
   forceHoverState = false,
   backgroundColor = '#000000',
-  scale = 1
+  scale = 1,
+  rotationSpeed = 0.4
 }: OrbProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
@@ -240,7 +242,6 @@ export default function Orb({
     let targetHover = 0;
     let lastTime = 0;
     let currentRot = 0;
-    const rotationSpeed = 0.4;
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!container) return;
@@ -296,7 +297,7 @@ export default function Orb({
       container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor, scale]);
+  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor, scale, rotationSpeed]);
 
   return <div ref={ctnDom} className="absolute inset-0 h-full w-full" />;
 }
