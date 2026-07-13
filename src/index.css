@@ -238,7 +238,8 @@
     transition: transform 0.55s var(--ease-butter);
   }
 
-  .link-underline:hover::after {
+  .link-underline:hover::after,
+  .group:hover .link-underline::after {
     transform: scaleX(1);
     transform-origin: left;
   }
