@@ -164,6 +164,7 @@ export type Project = {
   title: string
   description: string
   tags: string[]
+  image: string
   link?: string
   github?: string
   featured?: boolean
@@ -176,6 +177,7 @@ export const projects: Project[] = [
     description:
       'AI-powered insurance policy analyzer using RAG with FAISS and LLMs — upload PDFs, ask questions, get intelligent answers from your documents.',
     tags: ['Python', 'RAG', 'FAISS', 'LLM'],
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/PolicyAI-Insurance-Policy-Analyzer-using-RAG-with-LLM',
     featured: true,
     stars: 1,
@@ -185,6 +187,7 @@ export const projects: Project[] = [
     description:
       'Full-stack marketplace for second-hand car dealerships — inventory management, grading system, and modern dealer workflows.',
     tags: ['JavaScript', 'Full-Stack', 'React'],
+    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/BUYC-Corp-inventory-grade-marketplace',
     featured: true,
   },
@@ -193,6 +196,7 @@ export const projects: Project[] = [
     description:
       'Production-grade Inventory Management REST API built with Spring Boot — secure, scalable backend for real-world inventory ops.',
     tags: ['Java', 'Spring Boot', 'REST'],
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/Spring-boot-mini-projects',
     featured: true,
     stars: 1,
@@ -202,6 +206,7 @@ export const projects: Project[] = [
     description:
       'DenseNet transfer learning on HAM10000 dataset for dermatological image classification — end-to-end ML pipeline.',
     tags: ['Python', 'CNN', 'DenseNet', 'ML'],
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/CNN-skin-disease-detection',
     stars: 1,
   },
@@ -210,6 +215,7 @@ export const projects: Project[] = [
     description:
       'Predicts Ethereum gas fees with LSTM and monitors real-time data via smart contracts — ML meets blockchain.',
     tags: ['Python', 'LSTM', 'Blockchain'],
+    image: 'https://images.unsplash.com/photo-1639765481190-0caaefb9d2dd?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/Gas-Price-Optimization-using-LSTM-and-Smart-Contracts',
     stars: 1,
   },
@@ -218,6 +224,7 @@ export const projects: Project[] = [
     description:
       'High-performance parallel matrix multiplication using the HPX C++ runtime — exploring distributed systems at scale.',
     tags: ['C++', 'HPX', 'HPC'],
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/HPX-pll-matrix-mtply',
     stars: 1,
   },
@@ -226,6 +233,7 @@ export const projects: Project[] = [
     description:
       'AudioWorklet implementation for eventyay-video player — raw PCM audio extraction for FOSSASIA/GSoC.',
     tags: ['Audio', 'Web API', 'Open Source'],
+    image: 'https://images.unsplash.com/photo-1478737270239-2f02ca77fc66?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/SUSI-Web-Audio-API',
   },
   {
@@ -233,6 +241,7 @@ export const projects: Project[] = [
     description:
       'Collection of Python projects exploring concurrency fundamentals — threads, locks, pools, and parallel patterns.',
     tags: ['Python', 'Concurrency'],
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/multithreading-mini-projects',
     stars: 1,
   },
@@ -241,6 +250,7 @@ export const projects: Project[] = [
     description:
       'Daily C programming challenges — disciplined practice log from early coding journey.',
     tags: ['C', 'Learning'],
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan/100-days-100-code',
     stars: 4,
   },
@@ -249,6 +259,7 @@ export const projects: Project[] = [
     description:
       'Animated creative portfolio — React Bits, WebGL backgrounds, buttery motion, and a single-file data template.',
     tags: ['React', 'Vite', 'Motion'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=280&fit=crop',
     github: 'https://github.com/weshaan',
   },
 ]
