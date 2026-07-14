@@ -6,8 +6,7 @@ import Footer from './Footer'
 import { CursorGlow } from '@/components/CursorGlow'
 import LiquidEther from '@/components/react-bits/LiquidEther'
 import Hyperspeed from '@/components/react-bits/Hyperspeed'
-import LightPillar from '@/components/react-bits/LightPillar'
-import { defaultLiquidEther, experienceHyperspeed, projectsLightPillar } from '@/config/pageBackgrounds'
+import { defaultLiquidEther, experienceHyperspeed } from '@/config/pageBackgrounds'
 import { useLenis, getLenis } from '@/hooks/useLenis'
 
 export default function Layout() {
@@ -34,8 +33,11 @@ export default function Layout() {
           <Hyperspeed effectOptions={experienceHyperspeed} />
         </div>
       ) : isProjects ? (
-        <div className="pointer-events-none fixed inset-0 z-0 bg-void" aria-hidden>
-          <LightPillar {...projectsLightPillar} />
+        <div className="pointer-events-none fixed inset-0 z-0 bg-[#060a12]" aria-hidden>
+          <div className="projects-armory__bg projects-armory__bg--layout">
+            <div className="projects-armory__speedlines" />
+            <div className="projects-armory__grid" />
+          </div>
         </div>
       ) : !isHome ? (
         <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
