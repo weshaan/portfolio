@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
+import SectionHeading from '@/components/SectionHeading'
 import TargetCursor from '@/components/react-bits/TargetCursor'
 import ProjectLoadoutCard, { shortTitle } from '@/components/projects/ProjectLoadoutCard'
+import { Section } from '@/components/layout/PageContainer'
 import { projects } from '@/data/siteData'
 
-const totalStars = projects.reduce((sum, p) => sum + (p.stars ?? 0), 0)
 const featuredCount = projects.filter((p) => p.featured).length
 
 export default function Projects() {
@@ -22,48 +23,37 @@ export default function Projects() {
         spinDuration={2.4}
       />
 
-      <div className="projects-armory relative min-h-screen pb-16 pt-24 md:pb-20">
+      <div className="projects-armory relative min-h-screen">
         <div className="projects-armory__bg" aria-hidden>
           <div className="projects-armory__speedlines" />
           <div className="projects-armory__grid" />
           <div className="projects-armory__vignette" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Top HUD */}
-          <header className="armory-hud mb-6 flex flex-col gap-4 lg:mb-8 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="armory-hud__eyebrow">
-                <span className="armory-hud__pulse" />
-                OPERATION // LOADOUT
-                <span className="armory-hud__jp">武器庫</span>
-              </p>
-              <h1 className="armory-hud__title">PROJECT ARMORY</h1>
-              <p className="armory-hud__subtitle">Select a skin · Inspect on GitHub</p>
-            </div>
+        <Section tight className="relative">
+          <SectionHeading
+            eyebrow="Projects"
+            title="Project armory"
+            subtitle="Select a skin · Inspect on GitHub"
+            trailing={
+              <div className="armory-hud__stats shrink-0">
+                <div className="armory-stat">
+                  <span className="armory-stat__label">INVENTORY</span>
+                  <span className="armory-stat__value">{String(projects.length).padStart(2, '0')}</span>
+                </div>
+                <div className="armory-stat armory-stat--gold">
+                  <span className="armory-stat__label">COVERT</span>
+                  <span className="armory-stat__value">{featuredCount}</span>
+                </div>
+              </div>
+            }
+          />
 
-            <div className="armory-hud__stats">
-              <div className="armory-stat">
-                <span className="armory-stat__label">INVENTORY</span>
-                <span className="armory-stat__value">{String(projects.length).padStart(2, '0')}</span>
-              </div>
-              <div className="armory-stat armory-stat--gold">
-                <span className="armory-stat__label">COVERT</span>
-                <span className="armory-stat__value">{featuredCount}</span>
-              </div>
-              <div className="armory-stat armory-stat--cyan">
-                <span className="armory-stat__label">STARS</span>
-                <span className="armory-stat__value">★ {totalStars}</span>
-              </div>
-            </div>
-          </header>
-
-          <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
-            {/* Kill feed / intel panel */}
+          <div className="armory-ui flex flex-col gap-6 lg:flex-row lg:gap-8">
             <aside className="armory-feed lg:w-56 lg:shrink-0">
               <div className="armory-feed__header">
-                <span>KILL FEED</span>
-                <span className="armory-feed__jp">戦績</span>
+                <span>EQUIPPED</span>
+                <span className="armory-feed__jp">装備</span>
               </div>
               <ul className="armory-feed__list">
                 {projects.map((project, i) => {
@@ -88,7 +78,6 @@ export default function Projects() {
               </div>
             </aside>
 
-            {/* Loadout grid */}
             <div className="min-w-0 flex-1">
               <div className="armory-grid-header mb-4 flex items-center justify-between">
                 <span className="armory-grid-header__label">BUY MENU // SKINS</span>
@@ -111,8 +100,7 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Bottom HUD */}
-          <footer className="armory-footer mt-8">
+          <footer className="armory-ui armory-footer mt-8">
             <div className="armory-footer__bar">
               <span>HP</span>
               <div className="armory-footer__hp">
@@ -129,7 +117,7 @@ export default function Projects() {
               <span className="armory-footer__ammo-icon">▮▮▮</span>
             </div>
           </footer>
-        </div>
+        </Section>
       </div>
     </>
   )

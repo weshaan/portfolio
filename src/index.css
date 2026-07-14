@@ -319,6 +319,11 @@
   --armory-red: #eb4b4b;
   --armory-panel: rgba(8, 14, 24, 0.88);
   --armory-border: rgba(94, 234, 212, 0.18);
+}
+
+.armory-ui,
+.armory-hud__stats,
+.armory-footer {
   font-family: var(--font-hud);
 }
 
@@ -366,52 +371,6 @@
 @keyframes armory-drift {
   from { transform: translateX(0) translateY(0); }
   to { transform: translateX(-80px) translateY(40px); }
-}
-
-.armory-hud__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--armory-cyan);
-}
-
-.armory-hud__pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--armory-red);
-  box-shadow: 0 0 12px var(--armory-red);
-  animation: pulse-glow 1.4s ease-in-out infinite;
-}
-
-.armory-hud__jp {
-  margin-left: 0.25rem;
-  color: rgba(244, 114, 182, 0.85);
-  letter-spacing: 0.15em;
-}
-
-.armory-hud__title {
-  margin: 0.35rem 0 0;
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  line-height: 1;
-  color: #eef2f8;
-  text-shadow: 0 0 40px rgba(222, 155, 53, 0.25);
-}
-
-.armory-hud__subtitle {
-  margin: 0.5rem 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: rgba(200, 208, 220, 0.55);
-  text-transform: uppercase;
 }
 
 .armory-hud__stats {
